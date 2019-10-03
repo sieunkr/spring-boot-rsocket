@@ -1,8 +1,7 @@
 package com.example.demo;
 
+import io.rsocket.Payload;
 import io.rsocket.RSocket;
-import io.rsocket.RSocketFactory;
-import io.rsocket.transport.netty.client.TcpClientTransport;
 import io.rsocket.util.DefaultPayload;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,14 +17,32 @@ public class HomeController {
 
     private final RSocket rSocket;
 
-    @GetMapping("/test")
-    public Mono<Void> getAll(){
+    @GetMapping("/request-response")
+    public Mono<Payload> getRequestResponse(){
+
+        return rSocket.requestResponse(DefaultPayload.create("Hello World!"));
+    }
+
+    @GetMapping("/fire-and-forget")
+    public Mono<Void> fireAndForget(){
 
         rSocket.fireAndForget(DefaultPayload.create("Hello World!"))
                 .subscribe();
 
         return Mono.empty();
+
     }
 
+    @GetMapping("/request-stream")
+    public Flux<Payload> getRequestStream(){
+
+        return rSocket.requestStream(DefaultPayload.create("Hello World!"));
+    }
+
+    @GetMapping("/channel")
+    public Flux<Payload> getChannel(){
+
+        return null;
+    }
 
 }
