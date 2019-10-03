@@ -26,9 +26,7 @@ public class FireForgetApplication {
         };
 
         Disposable server = RSocketFactory.receive()
-                .acceptor(
-                        (setupPayload, rsocket) ->
-                                Mono.just(rSocketImpl))
+                .acceptor((setupPayload, reactiveSocket) -> Mono.just(rSocketImpl))
                 .transport(TcpServerTransport.create("localhost", port))
                 .start()
                 .subscribe();
