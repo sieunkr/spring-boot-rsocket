@@ -20,7 +20,8 @@ public class RequestResponseApplication {
         RSocket rSocketImpl = new AbstractRSocket() {
             @Override
             public Mono<Payload> requestResponse(Payload payload) {
-                return Mono.just(DefaultPayload.create("response : " + payload.getDataUtf8()));
+                System.out.println(payload.getDataUtf8());
+                return Mono.just(DefaultPayload.create("Latte's price : 1200won"));
             }
         };
 
@@ -44,7 +45,9 @@ public class RequestResponseApplication {
 
         System.out.println("TCP client start, port : " + port);
 
-        socket.requestResponse(DefaultPayload.create("Hello World!"))
+        assert socket != null;
+
+        socket.requestResponse(DefaultPayload.create("Hello Latte."))
                 .map(Payload::getDataUtf8)
                 .doOnNext(System.out::println)
                 .block();
