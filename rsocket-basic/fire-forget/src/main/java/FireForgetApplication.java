@@ -16,7 +16,7 @@ public class FireForgetApplication {
         /*
         1.SERVER
         */
-
+        
         RSocket rSocketImpl = new AbstractRSocket() {
             @Override
             public Mono<Void> fireAndForget(Payload payload) {
