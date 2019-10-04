@@ -24,4 +24,10 @@ public class CoffeeController {
         return cafeRepository.findAll();
     }
 
+    @MessageMapping("fire-forget")
+    Mono<Void> AddCoffee(RequestCoffee request){
+        cafeRepository.add(request);
+        return Mono.empty();
+    }
+
 }

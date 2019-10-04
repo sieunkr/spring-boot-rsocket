@@ -31,4 +31,9 @@ public class CafeRepository {
     public Flux<Coffee> findAll(){
         return Flux.fromIterable(coffeeMap.values());
     }
+
+    public Mono<Void> add(RequestCoffee coffee){
+        coffeeMap.put(coffee.getName(), Coffee.builder().name(coffee.getName()).build());
+        return Mono.empty();
+    }
 }

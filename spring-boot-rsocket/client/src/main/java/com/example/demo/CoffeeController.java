@@ -3,10 +3,7 @@ package com.example.demo;
 import io.rsocket.Payload;
 import org.reactivestreams.Publisher;
 import org.springframework.messaging.rsocket.RSocketRequester;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -33,5 +30,13 @@ public class CoffeeController {
         return this.requester
                 .route("request-stream")
                 .retrieveFlux(Coffee.class);
+    }
+
+    @PostMapping("/coffees/{name}")
+    Mono<Void> AddCoffee(@PathVariable String name) {
+        return this.requester
+                .route("fire-forget")
+                .data(new RequestCoffee(name))
+                .send();
     }
 }
