@@ -37,3 +37,11 @@ spring-boot-rsocket/server/gradle/wrapper/gradle-wrapper.jar
 spring-boot-rsocket/server/gradle/wrapper/gradle-wrapper.properties
 spring-boot-rsocket/server/gradlew
 spring-boot-rsocket/server/gradlew.bat
+spring-boot-rsocket/server/gradle/wrapper/gradle-wrapper.jar
+spring-boot-rsocket/server/gradle/wrapper/gradle-wrapper.jar
+spring-boot-rsocket/client/gradle/wrapper/gradle-wrapper.jar
+spring-boot-rsocket-basic/server/gradle/wrapper/gradle-wrapper.jar
+spring-boot-rsocket-basic/client/gradle/wrapper/gradle-wrapper.jar
+*.jar
+spring-boot-rsocket-basic/server/gradle/wrapper/gradle-wrapper.jar
+rsocket-basic/channel/gradle/wrapper/gradle-wrapper.jar

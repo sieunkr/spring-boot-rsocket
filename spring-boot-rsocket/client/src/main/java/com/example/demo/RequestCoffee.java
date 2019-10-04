@@ -2,6 +2,7 @@ package com.example.demo;
 
 import lombok.Data;
 
+@Data
 public class RequestCoffee {
     private String name;
 
@@ -13,11 +14,4 @@ public class RequestCoffee {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
