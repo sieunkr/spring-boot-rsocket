@@ -22,7 +22,7 @@ public class RSocketConfiguration {
     @Bean
     RSocketRequester rSocketRequester(RSocketStrategies strategies) {
         InetSocketAddress address = new InetSocketAddress("localhost", 7000);
-        log.info("RSocket server address={}", address);
+
         return RSocketRequester.builder()
                 .rsocketFactory(factory -> factory
                         .dataMimeType(MimeTypeUtils.ALL_VALUE)
